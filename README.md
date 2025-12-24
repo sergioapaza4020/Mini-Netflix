@@ -39,10 +39,7 @@ El sistema está diseñado con una separación clara entre:
 │   └── README.md (opcional)
 │
 ├── diagrams/
-│   ├── er-diagram-sql.puml
-│   ├── uml-diagram-ts.puml
-│   └── exports/
-│       ├── er-diagram.pdf
-│       └── uml-diagram.png
+│   ├── sql_entity_model.png
+│   ├── ts_entity_model.png
 │
 └── README.md

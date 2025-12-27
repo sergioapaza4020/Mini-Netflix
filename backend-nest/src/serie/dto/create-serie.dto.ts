@@ -19,4 +19,9 @@ export class CreateSerieDto {
     @Optional()
     @IsArray()
     episodesId: string[];
+
+    @ApiProperty({ example: `["horror", "terror"]`, description: 'Ids de los géneros', type: [String], isArray: true })
+    @Optional()
+    @IsArray()
+    genresId: string[];
 }

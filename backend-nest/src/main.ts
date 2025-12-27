@@ -14,8 +14,16 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Mini Netflix API')
-    .setDescription('API creada para series y episodios de una plataforma de streaming')
+    .setDescription('API creada para series y episodios de una plataforma de streaming, usa mushu@admin.com y password para probar los endpoints')
     .setVersion('1.0')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      description: 'Pega aquí SOLO el token JWT (sin "Bearer ")',
+    },
+      'access-token',
+    )
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

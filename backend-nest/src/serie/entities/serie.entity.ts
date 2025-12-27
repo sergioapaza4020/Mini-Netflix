@@ -1,5 +1,6 @@
 import { Episode } from "src/episode/entities/episode.entity";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Genre } from "src/genre/entities/genre.entity";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Serie {
@@ -25,5 +26,9 @@ export class Serie {
     updatedAt: Date;
 
     @OneToMany(() => Episode, episode => episode.serie)
-    episodes: Episode[]
+    episodes: Episode[];
+
+    @ManyToMany(() => Genre, genre => genre.series, { cascade: true })
+    @JoinTable()
+    genres: Genre[];
 }

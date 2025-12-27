@@ -70,7 +70,7 @@ export class EpisodeService {
 }
 
   async update(id: string, updateEpisodeDto: UpdateEpisodeDto): Promise < EpisodeResponseDto > {
-  const episode = await this.episodeRepository.findOneBy({ id });
+  const episode = await this.episodeRepository.findOneBy({ id, isActive: true });
   if(!episode)
       throw new BadRequestException(`Episodio no existente o no encontrado`);
 

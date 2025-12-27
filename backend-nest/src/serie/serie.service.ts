@@ -18,8 +18,11 @@ export class SerieService {
     async findAllSeries() {
         return await this.serieRepository
             .createQueryBuilder("serie")
-            .leftJoin("serie.genres", "genre")
             .where("serie.isActive = :isActive", { isActive: true })
+            .leftJoin("serie.genres", "genre")
+            .where("genre.isActive = :isActive", { isActive: true })
+            .leftJoin("serie.episodes", "episode")
+            .where("episode.isActive = :isActive", { isActive: true })
             .select([
                 'serie.id',
                 'serie.title',
@@ -27,7 +30,11 @@ export class SerieService {
                 'serie.urlPortrait',
                 'serie.isActive',
                 'genre.id',
-                'genre.type'
+                'genre.type',
+                'episode.id',
+                'episode.title',
+                'episode.durationSeconds',
+                'episode.episodeNumber'
             ])
             .getMany();
     }
